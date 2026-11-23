@@ -1,0 +1,10 @@
+# Runs once; triggered daily by stock-picker.timer. Picks only every 30 days.
+[Unit]
+Description=Monthly stock picker (paper portfolio + Telegram picks)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=bot
+WorkingDirectory=/opt/claude-trade-brain
+ExecStart=/opt/claude-trade-brain/.venv/bin/python -m picker.run
